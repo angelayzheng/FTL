@@ -56,7 +56,8 @@ Run the checks relevant to your changes from the repository root:
 
 ```bash
 backend/.venv/bin/python backend/manage.py check
-cd frontend && npm run build
+backend/.venv/bin/python -m black --check backend
+cd frontend && npm run build && npm run lint && npm run lint:js
 ```
 
 Also verify that new dependencies are recorded in the appropriate dependency file and that generated or local-only files are not included in the commit.

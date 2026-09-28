@@ -40,6 +40,7 @@ backend/
 		wsgi.py         WSGI entry point
 	manage.py         Django command-line entry point
 	requirements.txt  Python dependencies
+	pyproject.toml    Black formatter configuration
 	db.sqlite3        Local database created by migrations (not committed)
 
 frontend/
@@ -49,6 +50,8 @@ frontend/
 	    index.css       Tailwind CSS import and global styles
 		assets/         Frontend image and SVG assets
 	package.json      npm scripts and dependencies
+	prettier.config.js Prettier and Tailwind class-sorting configuration
+	.prettierignore   Prettier exclusions
 	vite.config.js    Vite and Tailwind configuration
 
 docs/
@@ -69,6 +72,8 @@ Use npm scripts from the `frontend` directory:
 - `npm run preview`: preview the production build locally.
 
 Tailwind CSS is integrated through `@tailwindcss/vite` in `frontend/vite.config.js`. Add UI styling with Tailwind utility classes rather than introducing component-specific CSS files unless a custom CSS rule is necessary.
+
+Python formatting is enforced with Black using `backend/pyproject.toml`. Frontend formatting is enforced with Prettier and `prettier-plugin-tailwindcss`; Oxlint remains available as `npm run lint:js` for JavaScript-specific checks.
 
 ## Backend
 

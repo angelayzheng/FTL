@@ -66,7 +66,7 @@ backend/.venv/bin/python backend/manage.py migrate
 python -m venv backend\.venv
 backend\.venv\Scripts\python.exe -m pip install --upgrade pip
 backend\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
-backend\.venv\Scripts\python.exe backend\.venv\Scripts\python.exe backend/manage.py migrate
+backend\.venv\Scripts\python.exe backend\manage.py migrate
 ```
 
 *(Note: On Windows PowerShell/CMD, you can also activate the virtual environment with `backend\.venv\Scripts\activate` to simplify command execution).*
@@ -134,6 +134,17 @@ npm run dev
 
 The frontend runs at <http://localhost:5173>.
 
+## Recommended VS Code extensions
+
+The workspace recommends these extensions in `.vscode/extensions.json`:
+
+- **Prettier - Code formatter** (`esbenp.prettier-vscode`) for JavaScript, JSX, JSON, CSS, and Markdown.
+- **Tailwind CSS IntelliSense** (`bradlc.vscode-tailwindcss`) for Tailwind class completion and diagnostics.
+- **Black Formatter** (`ms-python.black-formatter`) for Python formatting.
+- **Python** (`ms-python.python`) for Python language support and virtual-environment selection.
+
+Format-on-save is enabled in `.vscode/settings.json`. Prettier also uses `prettier-plugin-tailwindcss` to sort Tailwind classes consistently.
+
 ---
 
 ## Validation
@@ -150,11 +161,33 @@ backend/.venv/bin/python backend/manage.py check
 backend\.venv\Scripts\python.exe backend\manage.py check
 ```
 
+Check Python formatting with Black:
+
+**Linux / macOS:**
+```bash
+backend/.venv/bin/python -m black --check backend
+```
+
+**Windows (CMD / PowerShell):**
+```cmd
+backend\.venv\Scripts\python.exe -m black --check backend
+```
+
 Build the frontend for production:
 
 ```bash
 cd frontend
 npm run build
 ```
+
+Check frontend formatting with Prettier and JavaScript quality with Oxlint:
+
+```bash
+cd frontend
+npm run lint
+npm run lint:js
+```
+
+Use `npm run format` to apply Prettier formatting locally.
 
 When adding frontend UI, use Tailwind utility classes in React components. Keep the Tailwind import in `frontend/src/index.css` and update `frontend/vite.config.js` if the styling build integration changes.

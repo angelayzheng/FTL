@@ -28,7 +28,8 @@ Run the checks relevant to the files changed. From the repository root:
 
 ```bash
 backend/.venv/bin/python backend/manage.py check
-cd frontend && npm run build
+backend/.venv/bin/python -m black --check backend
+cd frontend && npm run build && npm run lint && npm run lint:js
 ```
 
 For backend changes, also run migrations when models change:
@@ -38,10 +39,10 @@ backend/.venv/bin/python backend/manage.py makemigrations
 backend/.venv/bin/python backend/manage.py migrate
 ```
 
-For frontend changes, run the available lint command when applicable:
+For frontend changes, run the formatter and JavaScript lint commands:
 
 ```bash
-cd frontend && npm run lint
+cd frontend && npm run lint && npm run lint:js
 ```
 
 Do not claim a check passed unless it was actually run. Report any unavailable or failing checks clearly.
