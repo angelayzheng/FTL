@@ -36,6 +36,8 @@ npm install
 cd ..
 ```
 
+The frontend uses Tailwind CSS through the Vite plugin. Tailwind is installed with the frontend dependencies, so no separate CSS setup command is required after `npm install`.
+
 ### Backend
 
 Create the local Python virtual environment and install the backend dependencies:
@@ -109,3 +111,5 @@ Build the frontend for production:
 cd frontend
 npm run build
 ```
+
+When adding frontend UI, use Tailwind utility classes in React components. Keep the Tailwind import in `frontend/src/index.css` and update `frontend/vite.config.js` if the styling build integration changes.

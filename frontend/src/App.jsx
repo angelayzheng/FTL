@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 
 const COUNT_API_URL = 'http://127.0.0.1:8000/api/count/'
 
@@ -45,15 +44,33 @@ function App() {
   }
 
   return (
-    <main className="vote-panel">
-      <p className="eyebrow">bam-_boo_!</p>
-      <h1>{count}</h1>
-      {error && <p className="error" role="alert">{error}</p>}
-      <div className="vote-controls" aria-label="Adjust count">
-        <button type="button" disabled={pending} onClick={() => updateCount(1)}>
+    <main className="flex min-h-screen flex-col items-center justify-center gap-5 bg-slate-950 px-4 py-8 text-slate-100">
+      <p className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-cyan-300">
+        bam-boo!
+      </p>
+      <h1 className="text-8xl font-black leading-none tracking-tight text-white sm:text-9xl">
+        {count}
+      </h1>
+      {error && (
+        <p className="rounded-md border border-red-400/50 bg-red-950/50 px-3 py-2 text-sm text-red-200" role="alert">
+          {error}
+        </p>
+      )}
+      <div className="flex flex-wrap justify-center gap-3" aria-label="Adjust count">
+        <button
+          type="button"
+          disabled={pending}
+          onClick={() => updateCount(1)}
+          className="min-w-32 rounded-full border-2 border-cyan-300 bg-cyan-300 px-5 py-3 text-lg font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-200 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-cyan-200 disabled:cursor-wait disabled:opacity-50"
+        >
           <span aria-hidden="true">👍</span> bam
         </button>
-        <button type="button" disabled={pending} onClick={() => updateCount(-1)}>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={() => updateCount(-1)}
+          className="min-w-32 rounded-full border-2 border-slate-600 bg-slate-900 px-5 py-3 text-lg font-bold text-slate-100 transition hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-800 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-slate-300 disabled:cursor-wait disabled:opacity-50"
+        >
           <span aria-hidden="true">👎</span> boo
         </button>
       </div>

@@ -17,6 +17,7 @@ Read `docs/SETUP.md` for local installation, `docs/CONTRIBUTING.md` for contribu
 - Use Bash commands and forward-slash paths in documentation.
 - Keep frontend dependencies in `frontend/package.json`.
 - Keep backend dependencies in `backend/requirements.txt`.
+- Use Tailwind CSS utility classes for frontend component styling; keep the Tailwind import in `frontend/src/index.css`.
 - Do not commit virtual environments, SQLite databases, dependency directories, or build output.
 - Update relevant documentation when setup or developer workflow changes.
 - Update `docs/ARCHITECTURE.md` in the same change when a service, route boundary, data model, directory, dependency, or other structural decision changes.

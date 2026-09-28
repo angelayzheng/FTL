@@ -46,11 +46,10 @@ frontend/
 	src/
 		main.jsx        React application entry point
 		App.jsx         Current root React component
-		index.css       Global styles
-		App.css         Root component styles
+	    index.css       Tailwind CSS import and global styles
 		assets/         Frontend image and SVG assets
 	package.json      npm scripts and dependencies
-	vite.config.js    Vite configuration
+	vite.config.js    Vite and Tailwind configuration
 
 docs/
 	ARCHITECTURE.md   Current system design and ownership boundaries
@@ -60,7 +59,7 @@ docs/
 
 ## Frontend
 
-The frontend entry point is `frontend/src/main.jsx`. It mounts the root `App` component into the page and loads the global stylesheet. `frontend/src/App.jsx` currently contains the Vite starter interface and is the starting point for the product UI.
+The frontend entry point is `frontend/src/main.jsx`. It mounts the root `App` component into the page and loads `frontend/src/index.css`. The interface is styled with Tailwind CSS utility classes in React components; `frontend/src/index.css` imports Tailwind and contains only global CSS rules.
 
 Use npm scripts from the `frontend` directory:
 
@@ -68,6 +67,8 @@ Use npm scripts from the `frontend` directory:
 - `npm run build`: create a production build in `frontend/dist`.
 - `npm run lint`: run the configured frontend linter.
 - `npm run preview`: preview the production build locally.
+
+Tailwind CSS is integrated through `@tailwindcss/vite` in `frontend/vite.config.js`. Add UI styling with Tailwind utility classes rather than introducing component-specific CSS files unless a custom CSS rule is necessary.
 
 ## Backend
 
