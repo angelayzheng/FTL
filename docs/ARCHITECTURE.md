@@ -45,14 +45,15 @@ backend/
 
 frontend/
 	src/
-		main.jsx        React application entry point
-		App.jsx         Current root React component
+		main.tsx        React application entry point
+		App.tsx         Current root React component
 	    index.css       Tailwind CSS import and global styles
 		assets/         Frontend image and SVG assets
 	package.json      npm scripts and dependencies
-	prettier.config.js Prettier and Tailwind class-sorting configuration
+	prettier.config.ts Prettier and Tailwind class-sorting configuration
 	.prettierignore   Prettier exclusions
-	vite.config.js    Vite and Tailwind configuration
+	tsconfig*.json    TypeScript configuration for app and build tooling
+	vite.config.ts    Vite and Tailwind configuration
 
 docs/
 	ARCHITECTURE.md   Current system design and ownership boundaries
@@ -62,18 +63,18 @@ docs/
 
 ## Frontend
 
-The frontend entry point is `frontend/src/main.jsx`. It mounts the root `App` component into the page and loads `frontend/src/index.css`. The interface is styled with Tailwind CSS utility classes in React components; `frontend/src/index.css` imports Tailwind and contains only global CSS rules.
+The frontend is written in TypeScript. Its entry point is `frontend/src/main.tsx`; it mounts the root `App` component into the page and loads `frontend/src/index.css`. The interface is styled with Tailwind CSS utility classes in React components; `frontend/src/index.css` imports Tailwind and contains only global CSS rules.
 
 Use npm scripts from the `frontend` directory:
 
 - `npm run dev`: start the Vite development server on port `5173`.
-- `npm run build`: create a production build in `frontend/dist`.
+- `npm run build`: type-check the frontend and create a production build in `frontend/dist`.
 - `npm run lint`: run the configured frontend linter.
 - `npm run preview`: preview the production build locally.
 
-Tailwind CSS is integrated through `@tailwindcss/vite` in `frontend/vite.config.js`. Add UI styling with Tailwind utility classes rather than introducing component-specific CSS files unless a custom CSS rule is necessary.
+Tailwind CSS is integrated through `@tailwindcss/vite` in `frontend/vite.config.ts`. Add UI styling with Tailwind utility classes rather than introducing component-specific CSS files unless a custom CSS rule is necessary.
 
-Python formatting is enforced with Black using `backend/pyproject.toml`. Frontend formatting is enforced with Prettier and `prettier-plugin-tailwindcss`; Oxlint remains available as `npm run lint:js` for JavaScript-specific checks.
+Python formatting is enforced with Black using `backend/pyproject.toml`. Frontend formatting is enforced with Prettier and `prettier-plugin-tailwindcss`; Oxlint remains available as `npm run lint:js` for TypeScript and JavaScript quality checks.
 
 ## Backend
 

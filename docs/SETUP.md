@@ -138,7 +138,7 @@ The frontend runs at <http://localhost:5173>.
 
 The workspace recommends these extensions in `.vscode/extensions.json`:
 
-- **Prettier - Code formatter** (`esbenp.prettier-vscode`) for JavaScript, JSX, JSON, CSS, and Markdown.
+- **Prettier - Code formatter** (`esbenp.prettier-vscode`) for TypeScript, TSX, JavaScript, JSON, CSS, and Markdown.
 - **Tailwind CSS IntelliSense** (`bradlc.vscode-tailwindcss`) for Tailwind class completion and diagnostics.
 - **Black Formatter** (`ms-python.black-formatter`) for Python formatting.
 - **Python** (`ms-python.python`) for Python language support and virtual-environment selection.
@@ -180,7 +180,7 @@ cd frontend
 npm run build
 ```
 
-Check frontend formatting with Prettier and JavaScript quality with Oxlint:
+Check frontend formatting with Prettier and TypeScript/JavaScript quality with Oxlint:
 
 ```bash
 cd frontend
@@ -190,4 +190,4 @@ npm run lint:js
 
 Use `npm run format` to apply Prettier formatting locally.
 
-When adding frontend UI, use Tailwind utility classes in React components. Keep the Tailwind import in `frontend/src/index.css` and update `frontend/vite.config.js` if the styling build integration changes.
+When adding frontend UI, use Tailwind utility classes in React components. Keep the Tailwind import in `frontend/src/index.css` and update `frontend/vite.config.ts` if the styling build integration changes.

@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 const COUNT_API_URL = 'http://127.0.0.1:8000/api/count/'
 
+interface CountResponse {
+  count: number
+}
+
 function App() {
   const [count, setCount] = useState(0)
   const [error, setError] = useState('')
@@ -13,7 +17,7 @@ function App() {
         if (!response.ok) {
           throw new Error('Could not load the count')
         }
-        return response.json()
+        return response.json() as Promise<CountResponse>
       })
       .then(({ count: savedCount }) => {
         setCount(savedCount)
@@ -23,7 +27,7 @@ function App() {
       .finally(() => setPending(false))
   }, [])
 
-  const updateCount = (delta) => {
+  const updateCount = (delta: 1 | -1) => {
     setPending(true)
     setError('')
 
@@ -36,7 +40,7 @@ function App() {
         if (!response.ok) {
           throw new Error('Could not update the count')
         }
-        return response.json()
+        return response.json() as Promise<CountResponse>
       })
       .then(({ count: savedCount }) => setCount(savedCount))
       .catch(() => setError('Could not save your choice'))
